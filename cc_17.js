@@ -47,3 +47,28 @@ customer2.addPurchase(85.75);
 const salesRep1 = new SalesRep('Carl Ramirez');
 salesRep1.addClient(customer2);
 salesRep1.getClientTotal('Bryce Waters');
+
+
+//Task 3: Create a VIPCustomer Class (extends Customer)
+const loyaltyBonus =  .1 //Creating loyalty bonus for VIP customers
+
+//Creating a VIPCustomer class that extends Customer
+class VIPCustomer extends Customer {
+    constructor(name, email, vipLevel) {
+        super(name, email);
+        this.vipLevel = vipLevel;
+    } 
+
+    getTotalSpent() {     //Returning total spent with 10% loyalty bonus added
+        const total = super.getTotalSpent();
+        const bonus = total * loyaltyBonus;
+        return total + bonus;
+    }
+}
+
+//logging a new VIP customer
+const vipCustomer1 = new VIPCustomer ("Bordo", "bordo@gmail.com", "Platinum")
+vipCustomer1.addPurchase(250);
+vipCustomer1.addPurchase(500);
+console.log(`VIP Customer: ${vipCustomer1.name} (${vipCustomer1.vipLevel})`);
+console.log(`Total Spent with Bonus: $${vipCustomer1.getTotalSpent().toFixed(2)}`);

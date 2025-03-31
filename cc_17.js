@@ -72,3 +72,32 @@ vipCustomer1.addPurchase(250);
 vipCustomer1.addPurchase(500);
 console.log(`VIP Customer: ${vipCustomer1.name} (${vipCustomer1.vipLevel})`);
 console.log(`Total Spent with Bonus: $${vipCustomer1.getTotalSpent().toFixed(2)}`);
+
+
+//Task 4: Building a client report system 
+const customer3 = new Customer ('Carly', 'carlyj.1@gmail.com' )
+customer3.addPurchase(100)
+
+const customer4 = new Customer('Joshua', 'joshua2@gmail.com')
+customer4.addPurchase(200)
+
+const customer5 = new VIPCustomer ('Yousef', 'yousefzori@gmail.com', 'Gold')
+customer5.addPurchase(300)
+
+const customers = [customer1, customer2,customer3, customer4, customer5] //all new customers created
+
+//Calculating total revenue from all customers using .reduce
+const totalRev = customers.reduce((total, customer) => total + customer.getTotalSpent(), 0)
+
+ //Finding customers and VIPcustomers who spent $500+ using .filter
+ const highSpend = customers.filter(customer => customer.getTotalSpent() > 500)
+
+ //Creating array of customer names and total spent using .map
+ const customerSummary = customers.map(customer => `${customer.name}: $${customer.getTotalSpent()}`)
+
+ //Logging the total revenue, high spenders, and customer summary
+    console.log(`Total Revenue: $${totalRev.toFixed(2)}`);
+    console.log(`High Spenders:`);
+    highSpend.forEach(customer => console.log(`${customer.name}: $${customer.getTotalSpent()}`));
+    console.log(`Customer Summary:`);
+    customerSummary.forEach(summary => console.log(summary));
